@@ -20,8 +20,38 @@
             <p>Come check us out</p>
             <a id="contact-button" href="#" role="button">Contact Us</a>
         </header>
-        <form>
+        <form id="pizza-form" action="#" method="get">
+            <!-- Contact info -->
+            <fieldset>
+                <legend>Contact info</legend>
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="fname" placeholder="Enter First Name">
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" name="lname" placeholder="Enter Last Name">
+                <label for="email">Email Address:</label>
+                <input type="text" id="email" name="email" placeholder="Enter Email Address">
+            </fieldset>
+            <!-- Pickup/Delivery-->
+            <fieldset>
+                <legend>Select Pickup or Delivery</legend>
+                <label for="pickup">
+                    <input type="radio" id="pickup" name="method" value="Pickup">Pickup
+                </label>
+                <label for="delivery">
+                    <input type="radio" id="delivery" name="method" value="Delivery">Delivery
+                </label>
+            </fieldset>
+            <!-- Toppings -->
+            <fieldset>
+                <legend>Select Toppings</legend>
 
+            </fieldset>
+            <!-- Size -->
+            <fieldset>
+                <legend>Pizza Size</legend>
+            </fieldset>
+            <!-- Submition Button -->
+            <button type="submit" id="order-button">Place Order</button>
         </form>
     </main>
 </body>
