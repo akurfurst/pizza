@@ -44,12 +44,53 @@
             <!-- Toppings -->
             <fieldset>
                 <legend>Select Toppings</legend>
-
+                <label for="pepperoni">
+                    <input type="checkbox" id="pepperoni" name="toppings[]" value="pepperoni">Pepperoni
+                </label>
+                <label for="salami">
+                    <input type="checkbox" id="salami" name="toppings[]" value="salami">Salami
+                </label>
+                <label for="sausage">
+                    <input type="checkbox" id="sausage" name="toppings[]" value="sausage">Sausage
+                </label>
+                <label for="ham">
+                    <input type="checkbox" id="ham" name="toppings[]" value="ham">Ham
+                </label>
+                <label for="bacon">
+                    <input type="checkbox" id="bacon" name="toppings[]" value="bacon">Bacon
+                </label>
+                <label for="onion">
+                    <input type="checkbox" id="onion" name="toppings[]" value="onion">Onion
+                </label>
+                <label for="garlic">
+                    <input type="checkbox" id="garlic" name="toppings[]" value="garlic">Garlic
+                </label>
+                <label for="tomatos">
+                    <input type="checkbox" id="tomatos" name="toppings[]" value="tomatos">Tomatos
+                </label>
+                <label for="olives">
+                    <input type="checkbox" id="olives" name="toppings[]" value="olives">Olives
+                </label>
             </fieldset>
             <!-- Size -->
             <fieldset>
                 <legend>Pizza Size</legend>
+                <select id="size" name="size">
+                    <option value="none">-- Select a size --</option>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+
+                </select>
             </fieldset>
+            <!-- Comment Field -->
+            <label for="comment">Comments</label>
+            <textarea rows="5" id="comment" name="comment"></textarea>
+            <!-- discounts checkbox -->
+            <label for="discounts">
+                <input type="checkbox" id="discounts" name="discounts" value="discounts" checked>Sign me up for discounts
+            </label>
+
             <!-- Submition Button -->
             <button type="submit" id="order-button">Place Order</button>
         </form>

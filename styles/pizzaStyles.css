@@ -58,3 +58,11 @@ label{
     display: block;
     padding-bottom: .25rem;
 }
+
+input[type="text"], textarea, select{
+    width: 100%;
+    border: 1px sollid darkgrey;
+    border-radius: .25rem;
+    margin-bottom: 1rem;
+    padding: .75rem;
+}
