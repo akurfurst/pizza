@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza</title>
     <link rel="icon" href="images/pizza.png">
-
+    <script src="pizza.js" defer></script>
     <link rel="stylesheet" href="styles/pizzaStyles.css">
 </head>
 
@@ -24,11 +24,17 @@
             <!-- Contact info -->
             <fieldset>
                 <legend>Contact info</legend>
-                <label for="fname">First Name:</label>
+                <label for="fname">First Name:
+                    <span class="err" id="err-fname">First name is required</span>
+                </label>
                 <input type="text" id="fname" name="fname" placeholder="Enter First Name">
-                <label for="lname">Last Name:</label>
+                <label for="lname">Last Name:
+                    <span class="err" id="err-lname">Last name is required</span>
+                </label>
                 <input type="text" id="lname" name="lname" placeholder="Enter Last Name">
-                <label for="email">Email Address:</label>
+                <label for="email">Email Address:
+                    <span class="err" id="err-email">Email is required</span>
+                </label>
                 <input type="text" id="email" name="email" placeholder="Enter Email Address">
             </fieldset>
             <!-- Pickup/Delivery-->
@@ -40,6 +46,7 @@
                 <label for="delivery">
                     <input type="radio" id="delivery" name="method" value="Delivery">Delivery
                 </label>
+                <span class="err" id="err-method">Please select method</span>
             </fieldset>
             <!-- Toppings -->
             <fieldset>
@@ -82,13 +89,15 @@
                     <option value="large">Large</option>
 
                 </select>
+                <span class="err" id="err-size">Please select a pizza size</span>
             </fieldset>
             <!-- Comment Field -->
             <label for="comment">Comments</label>
             <textarea rows="5" id="comment" name="comment"></textarea>
             <!-- discounts checkbox -->
             <label for="discounts">
-                <input type="checkbox" id="discounts" name="discounts" value="discounts" checked>Sign me up for discounts
+                <input type="checkbox" id="discounts" name="discounts" value="discounts" checked>Sign me up for
+                discounts
             </label>
 
             <!-- Submition Button -->

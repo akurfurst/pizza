@@ -26,12 +26,12 @@ header h1 {
     color: green;
 }
 
-header img{
+header img {
     float: right;
     max-width: 200px;
 }
 
-#contact-button{    
+#contact-button {
     border: none;
     background-color: darkgreen;
     border-color: darkgreen;
@@ -42,27 +42,35 @@ header img{
     font-size: 1rem;
 }
 
-legend{
+legend {
     color: darkgreen;
     font-variant: small-caps;
     font-size: 1.5rem;
     padding: 0 1rem;
 }
 
-fieldset{
+fieldset {
     border: 1px solid darkgreen;
     padding: 1rem;
     margin-bottom: 1.25rem;
 }
-label{
+
+label {
     display: block;
     padding-bottom: .25rem;
 }
 
-input[type="text"], textarea, select{
+input[type="text"],
+textarea,
+select {
     width: 100%;
     border: 1px sollid darkgrey;
     border-radius: .25rem;
     margin-bottom: 1rem;
     padding: .75rem;
+}
+
+.err {
+    color: rgb(255, 0, 21);
+    display: none;
 }
