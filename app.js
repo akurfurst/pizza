@@ -4,6 +4,12 @@ import express from 'express';
 //create an express application
 const app = express();
 
+//Middleware that allows express to read form data and store it in req.body
+app.use(express.urlencoded({extended: true}));
+
+//create a temp array to store orders
+const orders = [];
+
 //define a port number where server will listen
 const PORT = 3000;
 
@@ -14,6 +20,40 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.sendFile(`${import.meta.dirname}/views/home.html`);
 });
+
+app.get('/contact-us', (req, res) => {
+    res.sendFile(`${import.meta.dirname}/views/contact.html`);
+});
+
+app.get('/thank-you', (req, res) => {
+    res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+});
+
+app.post('/submit-order', (req, res) => {
+    
+    //crate a JSON object to store the order data
+    const order = {
+        fname: req.body.fname,
+        lname: req.body.lname,
+        email: req.body.email,
+        toppings: req.body.toppings ? req.body.toppings : "none",
+        method: req.body.method,
+        size: req.body.size,
+        comment: req.body.comment,
+        timestamp: new Date()
+    };
+
+    //Add order object to orders
+    orders.push(order)
+
+    //res.send(orders)
+    res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+});
+
+app.get('/admin', (req, res) => {
+    res.send(orders);
+});
+
 
 //start server and listen on designated port
 app.listen(PORT, () => {
