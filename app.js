@@ -4,8 +4,11 @@ import express from 'express';
 //create an express application
 const app = express();
 
+//set EJS as the view engine
+app.set('view engine', 'ejs');
+
 //Middleware that allows express to read form data and store it in req.body
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 //create a temp array to store orders
 const orders = [];
@@ -18,19 +21,19 @@ app.use(express.static('public'));
 
 //define our main route ('/')
 app.get('/', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/home.html`);
+    res.render('home');
 });
 
 app.get('/contact-us', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/contact.html`);
+    res.render('contact');
 });
 
 app.get('/thank-you', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+    res.render('confirmation');
 });
 
 app.post('/submit-order', (req, res) => {
-    
+
     //crate a JSON object to store the order data
     const order = {
         fname: req.body.fname,
@@ -47,15 +50,15 @@ app.post('/submit-order', (req, res) => {
     orders.push(order)
 
     //res.send(orders)
-    res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+    res.render('confirmation', {order});
 });
 
 app.get('/admin', (req, res) => {
-    res.send(orders);
+    res.render('admin', {orders});
 });
 
 
 //start server and listen on designated port
 app.listen(PORT, () => {
-    console.log(`Server is running at http:/localhost:${PORT}`);
+    console.log(`Server is running at http://localhost:${PORT}`);
 });
