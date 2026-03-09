@@ -16,9 +16,6 @@ app.set('view engine', 'ejs');
 //Middleware that allows express to read form data and store it in req.body
 app.use(express.urlencoded({ extended: true }));
 
-//create a temp array to store orders
-const orders = [];
-
 //define a port number where server will listen
 const PORT = 3000;
 
@@ -57,29 +54,36 @@ app.get('/thank-you', (req, res) => {
     res.render('confirmation');
 });
 
-app.post('/submit-order', (req, res) => {
+app.post('/submit-order', async(req, res) => {
 
-    //crate a JSON object to store the order data
-    const order = {
-        fname: req.body.fname,
-        lname: req.body.lname,
-        email: req.body.email,
-        toppings: req.body.toppings ? req.body.toppings : "none",
-        method: req.body.method,
-        size: req.body.size,
-        comment: req.body.comment,
-        timestamp: new Date()
-    };
+    const order = req.body;
 
-    //Add order object to orders
-    orders.push(order)
+    //crate a array object to store the order data
+    const params = [
+        req.body.fname,
+        req.body.lname,
+        req.body.email,
+        req.body.size,
+        req.body.method,
+        
+        
+    ];
+
+    //insert a new order into the database
+    const sql = `INSERT INTO orders (fname, lname, email, size, method, toppings) VALUES (?, ?, ?, ?, ?, ?)`
+    const result = await pool.execute(sql, params);
 
     //res.send(orders)
     res.render('confirmation', {order});
 });
 
-app.get('/admin', (req, res) => {
-    res.render('admin', {orders});
+app.get('/admin', async(req, res) => {
+    //read all order sfrom the dtabase
+    //newest first
+    const orders = await pool.query('SELECT * FROM orders ORDER BY timestamp DESC');
+    //console.log(orders);
+
+    res.render('admin', {orders:orders[0]});
 });
 
 
